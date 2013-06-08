@@ -13,14 +13,13 @@
     <string name="label_on">Zap</string>
     <string name="label_off">Vyp</string>
     <string name="label_high">Vysoký jas</string>
-    <string name="label_strobe">Prerušované</string>
-    <string name="label_frequency">Opakovanie: (potiahnite pre zmenu)</string>
-    <string name="widget_options">Všeobecné nastavenia</string>
-    <string name="setting_widget_bright">Widget jasu</string>
-    <string name="setting_widget_strobe">Prerušovaný blesk</string>
-    <string name="setting_frequency_title">Opakovanie prerušovania</string>
-    <string name="setting_frequency_dialog">Opakovanie</string>
-    <string name="setting_add_widget">Pridať widget</string>
-    <string name="not_torch_title">Fakľa zap</string>
-    <string name="not_torch_summary">Fakľa zapnutá</string>
+    <string name="label_strobe">Prerušované svietenie</string>
+    <string name="label_frequency">Frekvencia: (posunutím zmeníte)</string>
+    <string name="widget_options">Všeobecné voľbys</string>
+    <string name="setting_widget_bright">Miniaplikácia pre vysoký jas</string>
+    <string name="setting_widget_strobe">Prerušované svietenie</string>
+    <string name="setting_frequency_title">Frekvencia prerušovania</string>
+    <string name="setting_frequency_dialog">Frekvencia</string>
+    <string name="setting_add_widget">Pridať miniaplikáciu</string>
+    <string name="not_torch_title">Svietidlo zapnuté</string>
 </resources>

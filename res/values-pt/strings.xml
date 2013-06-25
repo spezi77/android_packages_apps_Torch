@@ -25,6 +25,5 @@
     <string name="setting_frequency_dialog">Frequência</string>
     <string name="setting_add_widget">Adicionar widget</string>
 
-    <string name="not_torch_summary">Tocha atualmente ligada</string>
     <string name="not_torch_title">Lanterna ligada</string>
 </resources>

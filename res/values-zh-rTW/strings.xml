@@ -23,7 +23,7 @@
 
     <string name="description">本應用程式能操控相機 LED\n</string>
     <string name="warning">警告：長期開啟 LED 會使其過熱。\n\n經測試探射燈可“長開”半小時，但仍是有令 LED 損壞的風險。\n</string>
-    <string name="license">原本的程式碼來自 Ben Buxton 編寫的 Nexus One 手電筒，在 GPL, v3 的規管下釋出。\nhttp://n1torch.googlecode.com/\n\n鳴謝 David Prieto 提供新介面設計。\n\n經過修改在 Steve Kondik 所創立的 CyanogenMod 上使用。\n\n</string>
+    <string name="license">原本的程式碼來自 Ben Buxton 編寫的 Nexus One 手電筒，在 GPL, v3 的規管下釋出。\nhttp://n1torch.googlecode.com/\n\n鳴謝 David Prieto 提供新介面設計。\n\n經過修改在 Martincz 所創立的 MoKee OpenSource 上使用。\n\n</string>
     <string name="warning_label">警告</string>
     <string name="brightwarn">探射燈曾經成功測試能運作半個小時，但變得頗熱，並於 45 分鐘時開始（暫時）驟暗驟明。未知會否有長期的副作用。\n\n這尚未在小工具上支援。\n\n若您願意承受此等風險，請按“接受”。</string>
     <string name="brightwarn_negative">不用了</string>

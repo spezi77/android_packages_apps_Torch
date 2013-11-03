@@ -22,7 +22,7 @@
     <string name="about_close">ياپ</string>
     <string name="description">بۇ پىروگرامما كامېرانىڭ چاقماق لامپىسى LED نى باشقۇرالايدۇ.\n</string>
     <string name="warning">ئاگاھلاندۇرۇش: LED ئۇزۇن ۋاقىت يورۇتۇلسا بەك قىزىپ كېتىدۇ.\n\nسىناش نەتىجىسىدە چاقماق چىراغ يۇقىرى يورۇقلۇق ھالىتىدە ئەڭ ئۇزۇن بولغاندا يېرىم سائەت تۇرسا بولىدۇ ئەمما يەنىلا LED نى كۆيدۈرۈۋېتىش خەۋپى بار.</string>
-    <string name="license">ئەسلى كودنىڭ مەنبەسى Ben Buxton يازغان Nexus One قول چىراغدىن كەلگەن، GPL, v3 نەشرىدە تارقىتىلغان.\nhttp://n1torch.googlecode.com/\n\nDavid Prieto نىڭ يېڭى ئارايۈز لايىھەسى بىلەن تەمىنلىگەنلىكىگە رەھمەت.\n\nئۆزگەرتىلگەندىن كېيىن Steve Kondik قۇرغان CyanogenMod تا ئىشلىتىلىدۇ.\n\n</string>
+    <string name="license">ئەسلى كودنىڭ مەنبەسى Ben Buxton يازغان Nexus One قول چىراغدىن كەلگەن، GPL, v3 نەشرىدە تارقىتىلغان.\nhttp://n1torch.googlecode.com/\n\nDavid Prieto نىڭ يېڭى ئارايۈز لايىھەسى بىلەن تەمىنلىگەنلىكىگە رەھمەت.\n\nئۆزگەرتىلگەندىن كېيىن Martincz قۇرغان MoKee OpenSource تا ئىشلىتىلىدۇ.\n\n</string>
     <string name="warning_label">ئاگاھلاندۇرۇش</string>
     <string name="brightwarn">سىناش نەتىجىسىدە چاقماق چىراغ يۇقىرى يورۇقلۇق ھالىتىدە ئەڭ ئۇزۇن بولغاندا يېرىم سائەت تۇرسا بولىدۇ ئەمما بەق قىزىپ كېتىدۇ، 45 مىنۇتتىن كېيىن (ۋاقىتلىق) بىر يېنىپ بىر ئۆچۈشكە باشلايدۇ.\n\nبۇ ئەپچە تېخى قوللىمايدۇ.\n\nئەگەر بۇ خەتەرگە تەۋەككۈل قىلىشنى خالىسىڭىز، «قوشۇل» توپچىنى چېكىڭ.</string>
     <string name="brightwarn_negative">ياق، رەھمەت</string>

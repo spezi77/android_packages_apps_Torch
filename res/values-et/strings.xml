@@ -23,7 +23,7 @@
 
     <string name="description">See programm kasutab kaamera LED-välku.\n</string>
     <string name="warning">Hoiatus: märgutule pikaajaline pidev kasutamine võib põhjustada ülekuumenemist.\n\nTäielikku heledust &#8220;alati peal&#8221; on proovitud pidevalt pool tundi, kuid on olemas oht, et see kahjustab LED-välku.\n</string>
-    <string name="license">Originaalne kood: Nexus One Torch by Ben Buxton, released under the GPL, v3.\nhttp://n1torch.googlecode.com/\n\nAitäh David Prieto uuest välimusest.\n\nMuutnud CyanogenModile: Steve Kondik.\n\n</string>
+    <string name="license">Originaalne kood: Nexus One Torch by Ben Buxton, released under the GPL, v3.\nhttp://n1torch.googlecode.com/\n\nAitäh David Prieto uuest välimusest.\n\nMuutnud MoKee OpenSourceile: Martincz.\n\n</string>
     <string name="warning_label">Hoiatus</string>
     <string name="brightwarn">Täielikku heledust on edukalt testitud poole tunni ajal, mille jooksul LED-välk kuumenes ja 45 minuti kohal hakkas vilkuma. Pikaajaline kasutamine võib kahjustada LED-välku.\n\nVidin ei toeta veel seda funktsiooni\n\nValige &#8220;Nõustu&#8221; kui soovite siiski kasutada seda omal vastutusel.</string>
     <string name="brightwarn_negative">Keeldu</string>

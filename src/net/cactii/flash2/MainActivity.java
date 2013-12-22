@@ -27,6 +27,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -144,7 +145,7 @@ public class MainActivity extends Activity {
                 intent.putExtra("strobe", mStrobeSwitch.isChecked());
                 intent.putExtra("period", mStrobePeriod);
                 intent.putExtra("bright", mBright);
-                sendBroadcast(intent);
+                sendBroadcastAsUser(intent, new UserHandle(UserHandle.USER_CURRENT));
             }
         });
 
@@ -161,7 +162,7 @@ public class MainActivity extends Activity {
 
                 Intent intent = new Intent("net.cactii.flash2.SET_STROBE");
                 intent.putExtra("period", mStrobePeriod);
-                sendBroadcast(intent);
+                sendBroadcastAsUser(intent, new UserHandle(UserHandle.USER_CURRENT));
             }
 
             @Override

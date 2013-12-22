@@ -27,6 +27,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.UserHandle;
 import android.preference.PreferenceManager;
 import android.widget.RemoteViews;
 
@@ -95,7 +96,8 @@ public class TorchWidgetProvider extends AppWidgetProvider {
                         mPrefs.getBoolean("widget_strobe_" + widgetId, false)); 
                 pendingIntent.putExtra("period",
                         mPrefs.getInt("widget_strobe_freq_" + widgetId, 200));
-                context.sendBroadcast(pendingIntent);
+                context.sendBroadcastAsUser(pendingIntent,
+                        new UserHandle(UserHandle.USER_CURRENT));
             }
             try {
                 Thread.sleep(50);

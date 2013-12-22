@@ -19,6 +19,7 @@
 package net.cactii.flash2;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
 import android.opengl.GLES11Ext;
@@ -26,6 +27,7 @@ import android.opengl.GLES20;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.util.Log;
+import android.widget.Toast;
 
 import net.cactii.flash2.R;
 
@@ -65,8 +67,10 @@ public class FlashDevice {
     private int mFlashMode = OFF;
 
     private Camera mCamera = null;
+    private Context mContext;
 
     private FlashDevice(Context context) {
+        mContext = context;
         mValueOff = context.getResources().getInteger(R.integer.valueOff);
         mValueOn = context.getResources().getInteger(R.integer.valueOn);
         mValueLow = context.getResources().getInteger(R.integer.valueLow);
@@ -75,9 +79,13 @@ public class FlashDevice {
         mFlashDevice = context.getResources().getString(R.string.flashDevice);
         mFlashDeviceLuminosity = context.getResources().getString(R.string.flashDeviceLuminosity);
         mUseCameraInterface = context.getResources().getBoolean(R.bool.useCameraInterface);
+        setWakeLock();
+    }
+
+    private void setWakeLock () {
         if (mUseCameraInterface) {
             PowerManager pm
-                = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+                = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
             this.mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Torch");
         }
     }
@@ -89,8 +97,8 @@ public class FlashDevice {
         return sInstance;
     }
 
-    public synchronized void setFlashMode(int mode) {
-	Log.d(MSG_TAG, "setFlashMode " + mode);
+    public synchronized boolean setFlashMode(int mode) {
+        Log.d(MSG_TAG, "setFlashMode " + mode);
         try {
             int value = mode;
             switch (mode) {
@@ -117,8 +125,24 @@ public class FlashDevice {
                     break;
             }
             if (mUseCameraInterface) {
-                if (mCamera == null) {
-                    mCamera = Camera.open();
+                try {
+                    if (mCamera == null) {
+                        mCamera = Camera.open();
+                    }
+                } catch (RuntimeException e) {
+                    Log.d(MSG_TAG, "Failed to connect to camera iface");
+                    Toast.makeText(mContext,
+                            R.string.error_connect_camera,
+                            Toast.LENGTH_SHORT).show();
+                    // just to be sure release
+                    // the wakelock
+                    if (mWakeLock.isHeld()) {
+                        mWakeLock.release();
+                    }
+                    mFlashMode = OFF;
+                    Intent i = new Intent(mContext, TorchService.class);
+                    mContext.stopService(i);
+                    return false;
                 }
                 if (value == OFF) {
                     Camera.Parameters params = mCamera.getParameters();
@@ -130,8 +154,9 @@ public class FlashDevice {
                         mCamera = null;
                         mSurfaceCreated = false;
                     }
-                    if (mWakeLock.isHeld())
+                    if (mWakeLock.isHeld()) {
                         mWakeLock.release();
+                    }
                 } else {
                     if (!mSurfaceCreated) {
                         int[] textures = new int[1];
@@ -171,7 +196,16 @@ public class FlashDevice {
                 // Devices with sysfs toggle and sysfs luminosity
                 if (mFlashDeviceLuminosity != null && mFlashDeviceLuminosity.length() > 0) {
                     if (mFlashDeviceWriter == null) {
-                        mFlashDeviceWriter = new FileWriter(mFlashDevice);
+                        try {
+                            mFlashDeviceWriter = new FileWriter(mFlashDevice);
+                        } catch (IOException e) {
+                            // something went wrong with sys interface
+                            // fall back to camera iface and try to
+                            // start torch
+                            mUseCameraInterface = true;
+                            setWakeLock();
+                            return setFlashMode(mode);
+                        }
                     }
                     if (mFlashDeviceLuminosityWriter == null) {
                         mFlashDeviceLuminosityWriter = new FileWriter(mFlashDeviceLuminosity);
@@ -213,8 +247,15 @@ public class FlashDevice {
                     }
                 } else {
                     // Devices with just a sysfs toggle
-                    if (mFlashDeviceWriter == null) {
+                    try {
                         mFlashDeviceWriter = new FileWriter(mFlashDevice);
+                    } catch (IOException e) {
+                        // something went wrong with sys interface
+                        // fall back to camera iface and try to
+                        // start torch
+                        mUseCameraInterface = true;
+                        setWakeLock();
+                        return setFlashMode(mode);
                     }
                     // Write to sysfs only if not already on
                     if (mode != mFlashMode) {
@@ -228,6 +269,7 @@ public class FlashDevice {
                 }
             }
             mFlashMode = mode;
+            return mode != OFF;
         } catch (IOException e) {
             throw new RuntimeException("Can't open flash device", e);
         }

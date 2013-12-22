@@ -36,6 +36,7 @@ public class TorchService extends Service {
     private int mFlashMode;
     private int mStrobePeriod;
     private boolean mStrobeOn;
+    private boolean mEnabled;
 
     private static final int MSG_UPDATE_FLASH = 1;
     private static final int MSG_DO_STROBE = 2;
@@ -57,12 +58,11 @@ public class TorchService extends Service {
             switch (msg.what) {
                 case MSG_UPDATE_FLASH:
                     if (mStrobePeriod != 0) {
-                        flash.setFlashMode(mStrobeOn ? mFlashMode : FlashDevice.STROBE);
+                        updateState(flash.setFlashMode(
+                            mStrobeOn ? mFlashMode : FlashDevice.STROBE));
                     } else {
-                        flash.setFlashMode(mFlashMode);
+                        updateState(flash.setFlashMode(mFlashMode));
                     }
-                    removeMessages(MSG_UPDATE_FLASH);
-                    sendEmptyMessageDelayed(MSG_UPDATE_FLASH, 100);
                     break;
                 case MSG_DO_STROBE:
                     mStrobeOn = !mStrobeOn;
@@ -89,10 +89,12 @@ public class TorchService extends Service {
         if (intent.getBooleanExtra("strobe", false)) {
             mStrobePeriod = intent.getIntExtra("period", 200);
             mStrobeOn = false;
+            mHandler.removeMessages(MSG_DO_STROBE);
             mHandler.sendEmptyMessage(MSG_DO_STROBE);
         } else {
             mStrobePeriod = 0;
         }
+        mHandler.removeMessages(MSG_UPDATE_FLASH);
         mHandler.sendEmptyMessage(MSG_UPDATE_FLASH);
 
         registerReceiver(mStrobeReceiver, new IntentFilter("net.cactii.flash2.SET_STROBE"));
@@ -114,7 +116,6 @@ public class TorchService extends Service {
                 .build();
 
         startForeground(getString(R.string.app_name).hashCode(), notification);
-        updateState(true);
 
         return START_STICKY;
     }
@@ -134,6 +135,10 @@ public class TorchService extends Service {
     }
 
     private void updateState(boolean on) {
+        if (mEnabled == on) {
+            return;
+        }
+        mEnabled = on;
         Intent intent = new Intent(TorchSwitch.TORCH_STATE_CHANGED);
         intent.putExtra("state", on ? 1 : 0);
         sendStickyBroadcast(intent);

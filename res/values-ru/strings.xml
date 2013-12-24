@@ -41,4 +41,5 @@
 
     <string name="not_torch_title">Фонарик включён</string>
     <string name="not_torch_toggle">Выключить фонарик</string>
+    <string name="error_connect_camera">Фонарик отключен.\nНевозможно подключиться к интерфейсу камеры.</string>
 </resources>

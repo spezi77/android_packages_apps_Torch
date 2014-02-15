@@ -220,11 +220,8 @@ public class FlashDevice {
                     if (mFlashDeviceWriter == null) {
                         mFlashDeviceWriter = new FileWriter(mFlashDevice);
                     }
-                    // Write to sysfs only if not already on
-                    if (mode != mFlashMode) {
-                        mFlashDeviceWriter.write(String.valueOf(value));
-                        mFlashDeviceWriter.flush();
-                    }
+                    mFlashDeviceWriter.write(String.valueOf(value));
+                    mFlashDeviceWriter.flush();
                     if (mode == OFF) {
                         mFlashDeviceWriter.close();
                         mFlashDeviceWriter = null;

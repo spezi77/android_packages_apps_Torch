@@ -167,8 +167,8 @@ public class FlashDevice {
                     Camera.Parameters params = mCamera.getParameters();
                     params.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
                     mCamera.setParameters(params);
-                    if (!mWakeLock.isHeld()) {  // only get the wakelock if we don't have it already
-                        mWakeLock.acquire(); // we don't want to go to sleep while cam is up
+                    if (!mWakeLock.isHeld()) {
+                        mWakeLock.acquire();
                     }
                 }
             } else {
@@ -205,10 +205,16 @@ public class FlashDevice {
                             mFlashDeviceWriter.write(String.valueOf(mValueOff));
                             mFlashDeviceWriter.close();
                             mFlashDeviceWriter = null;
+                            if (mWakeLock.isHeld()) {
+                                mWakeLock.release();
+                            }
                             break;
                         case STROBE:
                             mFlashDeviceWriter.write(String.valueOf(OFF));
                             mFlashDeviceWriter.flush();
+                            if (!mWakeLock.isHeld()) {
+                                mWakeLock.acquire();
+                            }
                             break;
                         case DEATH_RAY:
                             if (mValueDeathRay >= 0) {
@@ -241,12 +247,18 @@ public class FlashDevice {
                     if (mode == OFF) {
                         mFlashDeviceWriter.close();
                         mFlashDeviceWriter = null;
+                        if (mWakeLock.isHeld()) {
+                            mWakeLock.release();
+                        }
                     }
                 }
             }
             mFlashMode = mode;
             return mode != OFF;
         } catch (IOException e) {
+            if (mWakeLock.isHeld()) {
+                mWakeLock.release();
+            }
             throw new RuntimeException("Can't open flash device", e);
         }
     }

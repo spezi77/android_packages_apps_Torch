@@ -18,6 +18,6 @@
      MA  02110-1301, USA.
 -->
 <resources>
-  <string name="license">原本的程式碼來自 Ben Buxton 編寫的 Nexus One Torch，在 GPL, v3 的規管下釋出。\nhttp://n1torch.googlecode.com/\n\n鳴謝 David Prieto 提供新介面設計。\n\n經過 Steve Kondik 修改在 CyanogenMod 上使用。\n\n</string>
+  <string name="license">原本的程式碼來自 Ben Buxton 編寫的 Nexus One Torch，在 GPL, v3 的規管下釋出。\nhttp://n1torch.googlecode.com/\n\n鳴謝 David Prieto 提供新介面設計。\n\n經過 Martincz 修改在 MoKee OpenSource 上使用。\n\n</string>
   <string name="not_torch_title">手電筒開啟</string>
 </resources>

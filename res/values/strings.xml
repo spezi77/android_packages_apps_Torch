@@ -31,6 +31,7 @@
 
     <string name="label_high">High brightness</string>
     <string name="label_strobe">Strobe</string>
+    <string name="label_screen_off">Turn torch off on screen off</string>
 
     <string name="widget_options">General options</string>
     <string name="setting_widget_bright">Bright widget</string>

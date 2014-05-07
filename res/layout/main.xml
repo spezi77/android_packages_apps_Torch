@@ -58,6 +58,23 @@
     <Switch
         android:layout_width="match_parent"
         android:layout_height="48dp"
+        android:text="@string/label_screen_off"
+        android:id="@+id/screen_off_switch"
+        android:checked="false"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp" />
+
+    <View
+        android:id="@+id/ruler3"
+        android:layout_height="1dp"
+        android:layout_width="match_parent"
+        android:background="@color/divider_color" />
+
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
         android:text="@string/label_strobe"
         android:id="@+id/strobe_switch"
         android:checked="false"
@@ -93,7 +110,7 @@
     </LinearLayout>
 
     <View
-        android:id="@+id/ruler3"
+        android:id="@+id/ruler4"
         android:layout_height="1dp"
         android:layout_width="match_parent"
         android:background="@color/divider_color" />

@@ -31,6 +31,7 @@
 
     <string name="label_high">Максимальная яркость</string>
     <string name="label_strobe">Стробоскоп</string>
+    <string name="label_screen_off">Тушить фонарик всесте с экраном</string>
 
     <string name="widget_options">Настройки виджета</string>
     <string name="setting_widget_bright">Максимальная яркость</string>

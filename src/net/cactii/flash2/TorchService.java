@@ -108,23 +108,25 @@ public class TorchService extends Service {
         filter.addAction("net.cactii.flash2.SET_STROBE");
         registerReceiver(mReceiver, filter);
 
-        PendingIntent contentIntent = PendingIntent.getActivity(this,
-                0, new Intent(this, MainActivity.class), 0);
-        PendingIntent turnOffIntent = PendingIntent.getBroadcast(this, 0,
-                new Intent(TorchSwitch.TOGGLE_FLASHLIGHT), 0);
+        if (intent.getBooleanExtra("notification", true)) {
+            PendingIntent contentIntent = PendingIntent.getActivity(this,
+                    0, new Intent(this, MainActivity.class), 0);
+            PendingIntent turnOffIntent = PendingIntent.getBroadcast(this, 0,
+                    new Intent(TorchSwitch.FLASHLIGHT_OFF), 0);
 
-        Notification notification = new Notification.Builder(this)
-                .setSmallIcon(R.drawable.notification_icon)
-                .setTicker(getString(R.string.not_torch_title))
-                .setContentTitle(getString(R.string.not_torch_title))
-                .setContentIntent(contentIntent)
-                .setAutoCancel(false)
-                .setOngoing(true)
-                .addAction(R.drawable.ic_appwidget_torch_off,
-                    getString(R.string.not_torch_toggle), turnOffIntent)
-                .build();
-
-        startForeground(getString(R.string.app_name).hashCode(), notification);
+            Notification notification = new Notification.Builder(this)
+                    .setSmallIcon(R.drawable.notification_icon)
+                    .setTicker(getString(R.string.not_torch_title))
+                    .setContentTitle(getString(R.string.not_torch_title))
+                    .setContentIntent(contentIntent)
+                    .setAutoCancel(false)
+                    .setOngoing(true)
+                    .addAction(R.drawable.ic_appwidget_torch_off,
+                        getString(R.string.not_torch_toggle), turnOffIntent)
+                    .build();
+            // Starting sticky, safe to omit if we aren't showing a notification
+            startForeground(getString(R.string.app_name).hashCode(), notification);
+        }
 
         return START_STICKY;
     }

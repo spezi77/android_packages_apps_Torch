@@ -243,9 +243,9 @@ public class FlashDevice {
                     }
                 } else {
 
-                    if (mode != OFF) {
+                    /*if (mode != OFF) {
                         onStartTorch(-1);
-                    }
+                    }*/
 
                     // Devices with just a sysfs toggle
                     if (mFlashDeviceWriter == null) {

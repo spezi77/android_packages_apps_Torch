@@ -30,6 +30,7 @@
   <string name="brightwarn_accept">Αποδοχή</string>
   <string name="label_high">Υψηλή φωτεινότητα</string>
   <string name="label_strobe">Στροβιλισμός</string>
+  <string name="label_screen_off">Απενεργοποίηση φακού σε απενεργοποιημένη οθόνη</string>
   <string name="widget_options">Γενικές ρυθμίσεις</string>
   <string name="setting_widget_bright">Υψηλή φωτεινότητα</string>
   <string name="setting_widget_strobe">Στροβιλισμός</string>
@@ -38,4 +39,5 @@
   <string name="setting_add_widget">Προσθήκη widget</string>
   <string name="not_torch_title">Φακός ενεργός</string>
   <string name="not_torch_toggle">Απενεργοποίηση φακού</string>
+  <string name="error_connect_camera">Ο φακός είναι απενεργοποιημένος.\nΔεν είναι δυνατή η σύνδεση με την φωτογραφική μηχανή.</string>
 </resources>

@@ -30,6 +30,7 @@
   <string name="brightwarn_accept">Přijmout</string>
   <string name="label_high">Vysoký jas</string>
   <string name="label_strobe">Blikání</string>
+  <string name="label_screen_off">Vypnout svítilnu při vypnutí obrazovky</string>
   <string name="widget_options">Obecné nastavení</string>
   <string name="setting_widget_bright">Widget jasu</string>
   <string name="setting_widget_strobe">Blikání</string>
@@ -38,4 +39,5 @@
   <string name="setting_add_widget">Přidat widget</string>
   <string name="not_torch_title">Svítilna zapnuta</string>
   <string name="not_torch_toggle">Svítilna vypnuta</string>
+  <string name="error_connect_camera">Svítilna je zakázaná. \nNelze se připojit k rozhraní fotoaparátu.</string>
 </resources>

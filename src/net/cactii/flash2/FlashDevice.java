@@ -265,11 +265,8 @@ public class FlashDevice {
                         setWakeLock();
                         return setFlashMode(mode);
                     }
-                    // Write to sysfs only if not already on
-                    if (mode != mFlashMode) {
-                        mFlashDeviceWriter.write(String.valueOf(value));
-                        mFlashDeviceWriter.flush();
-                    }
+                    mFlashDeviceWriter.write(String.valueOf(value));
+                    mFlashDeviceWriter.flush();
                     if (mode == OFF) {
                         mFlashDeviceWriter.close();
                         mFlashDeviceWriter = null;
